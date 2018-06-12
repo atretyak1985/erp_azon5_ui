@@ -47,7 +47,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     const formModel = this.loginForm.value;
-    this.authenticationService.login(formModel.email, formModel.password).subscribe((response: ApiResponse) => {
+    localStorage.setItem('currentUser', "{'user':'qwe@qwe.com'}");
+    this.router.navigate([this.returnUrl]);
+   /* this.authenticationService.login(formModel.email, formModel.password).subscribe((response: ApiResponse) => {
         const user = <User>response.data;
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -60,6 +62,6 @@ export class LoginComponent implements OnInit {
       error => {
         console.log(error);
       }
-    );
+    );*/
   }
 }

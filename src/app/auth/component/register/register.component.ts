@@ -40,9 +40,12 @@ export class RegisterComponent implements OnInit {
         passwordConfirm: ['', Validators.required]
       }, {validator: this.passwordValidator})
     });
+    console.log(' loginsssss statussssss');
   }
 
-  get firstName() { return this.registerForm.get('firstName'); }
+  get firstName() { return this.registerForm.get('firstName'); 
+  
+}
 
   get lastName() { return this.registerForm.get('lastName'); }
 
@@ -66,11 +69,15 @@ export class RegisterComponent implements OnInit {
       lastName: formModel.lastName,
       avatar: null,
       token: null,
+    
     };
+    //for testing only
+    this.router.navigate([this.returnUrl]);
 
     this.authenticationService.register(user).subscribe(
       (data) => {
         this.router.navigate([this.returnUrl]);
+        console.log('data');
       },
       (error) => {
         console.log(error);
